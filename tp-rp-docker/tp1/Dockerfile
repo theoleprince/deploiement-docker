@@ -8,19 +8,19 @@ COPY ./ ./
 RUN mvn clean package -DskipTests
 
 # la deuxieme etape de construction utilisera open tomcat
-FROM tomcat:9.0-alpine
+FROM tomcat:8.0.51-jre8-alpine
 
 # changer le port interne du conteneur tomcat
 RUN value=`cat conf/server.xml` && echo "${value//8080/80}" >| conf/server.xml
 
 # ne copier que les artefacts dont on a besoin depuis la premiere etape et ignore le reste
-COPY --from=MAVEN_BUILD ./target/*.jar /usr/local/tomcat/webapps/tp1.jar
+COPY --from=MAVEN_BUILD ./target/*.war /usr/local/tomcat/webapps/tp1.war
 
 EXPOSE 80
 
-CMD ["java", "-jar", "/tp1.jar"] 
+# CMD ["java", "-jar", "/tp1.jar"] 
 
-# CMD [ *.sh,"run" ]
+CMD ["catalina.sh", "run"]
 
 
 # Copiez l'exécutable dans le conteneur à /app

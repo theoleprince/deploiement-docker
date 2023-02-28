@@ -1,7 +1,7 @@
 version: "3"
 services:
   tp1:
-    container_name: tp
+    container_name: tp1
     build:
       context: ./
       dockerfile: Dockerfile    
@@ -18,5 +18,5 @@ services:
       MYSQL_USER: root123
       MYSQL_PASSWORD: root
       MYSQL_ROOT_PASSWORD: Root123456*
-    ports:
-      - 3307:3306
+    # ports:
+    #   - 3307:3306
