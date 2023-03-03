@@ -3,13 +3,7 @@ pipeline {
     stages {
         stage("verify tooling") {
             steps {
-                sh '''
-                docker version
-                docker info
-                docker compose version 
-                curl --version
-                jq --version
-                '''
+                sh 'docker-compose up --build'
             }
         }
         // stage('Scm Checkout'){
