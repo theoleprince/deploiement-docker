@@ -1,0 +1,22 @@
+version: "3"
+services:
+  tp1:
+    container_name: tp1
+    build:
+      context: ./
+      dockerfile: Dockerfile    
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+     - mysql_db
+  mysql_db:
+    image: "mysql:5.6"
+    restart: always
+    environment:
+      MYSQL_DATABASE: tp1_db
+      MYSQL_USER: root123
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: Root123456*
+    # ports:
+    #   - 3307:3306
