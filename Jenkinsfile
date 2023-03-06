@@ -20,8 +20,8 @@ pipeline {
         stage('Docker compose up Build'){
             steps {
                 sh '''
-                sudo chown jenkins:docker /var/run/docker.sock
-                sudo service docker start
+                chown jenkins:docker /var/run/docker.sock
+                service docker start
                 docker compose up --build
                 '''
             }
