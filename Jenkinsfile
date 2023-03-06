@@ -13,10 +13,14 @@ pipeline {
         //     }
         // }
         stage('Scm Checkout'){
-            git branch: 'main', credentialsId: 'gitHub', url: 'https://github.com/theoleprince/deploiement-docker'
+            steps {
+                git branch: 'main', credentialsId: 'gitHub', url: 'https://github.com/theoleprince/deploiement-docker'
+            }
         }
         stage('Docker compose up Build'){
-            sh 'docker-compose up --build'
+            steps {
+                sh 'docker-compose up --build'
+            }
         }
     }
     
