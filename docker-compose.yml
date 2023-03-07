@@ -50,14 +50,14 @@ services:
       - tp_rp_docker_network
     links:
       - "mysql_db"
-      - "snake"  
+      - "snakes"  
       - "tp1"  
     depends_on:
       - "mysql_db"
-      - "snake"  
+      - "snakes"  
       - "tp1" 
-  snake:
-    container_name: snake
+  snakes:
+    container_name: snakes
     build:
       context: ./Snake-Zek
       dockerfile: Dockerfile
